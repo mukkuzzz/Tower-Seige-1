@@ -3,6 +3,7 @@ const World = Matter.World;
 const Bodies = Matter.Bodies;
 const Constraint = Matter.Constraint;
 
+var score = 0;
 var engine, world;
 var holder,ball,ground;
 var stand1,stand2;
@@ -64,6 +65,7 @@ function setup() {
 }
 function draw() {
   background(56,44,44); 
+  
  
   ground.display();
   stand1.display();
@@ -104,13 +106,46 @@ function draw() {
   blocks9.display();
   fill("gold");
   imageMode(CENTER)
-  image(polygon_img ,ball.position.x,ball.position.y,40,40);
+  block1.score();
+  block2.score();
+  block3.score();
+  block4.score();
+  block5.score();
+  block6.score();
+  block7.score();
+  block8.score();
+  block9.score();
+  block10.score();
+  block11.score();
+  block12.score();
+  block13.score();
+  block14.score();
+  block15.score();
 
+  blocks1.score();
+  blocks2.score();
+  blocks3.score();
+  blocks4.score();
+  blocks5.score();
+  blocks6.score();
+  blocks7.score();
+  blocks8.score();
+  blocks9.score();
+
+
+  image(polygon_img ,ball.position.x,ball.position.y,40,40);
+  
   slingShot.display();
+  text("score: "+score,750,40);
 }
 function mouseDragged(){
   Matter.Body.setPosition(this.ball,{x:mouseX,y:mouseY});
 }
 function mouseReleased(){
   slingShot.fly();
+}
+function keyPressed(){
+  if(keyCode===32){
+    slingShot.attach(ball);
+  }
 }
